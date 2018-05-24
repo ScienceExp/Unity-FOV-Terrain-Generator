@@ -10,7 +10,7 @@ public class TerrainStreamer : MonoBehaviour
     public Camera cam;
     [Tooltip("Angle that is added to the FOV to expand it. (Todo: Figure out how to calculate)")]
     public int addAngleToFOV = 10;
-    [Tooltip ("Terrain Object")]
+    [Tooltip("Terrain Object")]
     public GameObject terrain;
     [Tooltip("Number of terrains to use as a buffer around fov")]
     public int terrainPadding = 2;
@@ -62,7 +62,7 @@ public class TerrainStreamer : MonoBehaviour
         }
         #endregion
 
-        triTerrains = new TerrainsInTriangle((int)meshSize.x, cam, terrainPadding,addAngleToFOV);
+        triTerrains = new TerrainsInTriangle((int)meshSize.x, cam, terrainPadding, addAngleToFOV);
 
         if (centerObject)
             halfMeshSize = (int)(meshSize.x / 2f);
@@ -106,7 +106,7 @@ public class TerrainStreamer : MonoBehaviour
             string tileName = triTerrains.TerrainPositions[i].x.ToString() + "_" + triTerrains.TerrainPositions[i].y.ToString(); //slow?
             if (!tiles.ContainsKey(tileName))                                                       //if terrain tile does not exist
             {
-                GameObject t = Instantiate(terrain.gameObject, new Vector3(triTerrains.TerrainPositions[i].x -halfMeshSize , 0, triTerrains.TerrainPositions[i].y - halfMeshSize), Quaternion.identity, parent.transform);
+                GameObject t = Instantiate(terrain.gameObject, new Vector3(triTerrains.TerrainPositions[i].x - halfMeshSize, 0, triTerrains.TerrainPositions[i].y - halfMeshSize), Quaternion.identity, parent.transform);
 
                 t.name = tileName;
                 Tile tile = new Tile(t, updateTime);
@@ -131,5 +131,8 @@ public class TerrainStreamer : MonoBehaviour
             }
         }
         tiles = newTerrain;
+        if (showDebug)
+            Debug.Log("#Terrains = " + tiles.Count);
+
     }
 }
