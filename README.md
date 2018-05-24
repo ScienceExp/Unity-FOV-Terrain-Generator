@@ -1,6 +1,8 @@
 # Unity-FOV-Terrain-Generator
 Generates terrain based on camera fov
 
+![alt text](FOV_Terrain_Generator.jpg)
+
 Getting Started
 
 Project made with Unity 2018.2.04b
