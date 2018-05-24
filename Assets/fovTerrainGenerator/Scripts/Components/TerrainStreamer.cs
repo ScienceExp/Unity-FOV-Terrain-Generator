@@ -43,7 +43,7 @@ public class TerrainStreamer : MonoBehaviour
         #region get terrain size
         if (terrain.GetComponent<MeshFilter>() != null)                     //if it has a meshFilter it must be a mesh...
         {
-            Mesh mesh = terrain.GetComponent<MeshFilter>().mesh;
+            Mesh mesh = terrain.GetComponent<MeshFilter>().sharedMesh;
             Bounds bounds = mesh.bounds;
             meshSize.x = bounds.size.x * terrain.transform.localScale.x;
             meshSize.y = bounds.size.y * terrain.transform.localScale.y;
